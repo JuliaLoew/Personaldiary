@@ -1,4 +1,6 @@
 import './index.css';
+import Diaries from './components/Diaries.jsx';
+import Adddiarybtn from './components/Adddiarybtn.jsx';
 
 
 const App = () => {
