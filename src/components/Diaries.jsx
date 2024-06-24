@@ -1,2 +1,2 @@
-import { useEffect; useState } from "react";
+import { useEffect, useState } from "react";
 export default Diaries;
