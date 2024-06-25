@@ -55,6 +55,7 @@ export default function AddDiary() {
         });
         addToLocalStorage("diaryData", diary);
         reset();   
+        document.getElementById("my_modal_3").close()
     }
   
     return (
