@@ -1,4 +1,4 @@
-import AddDiary from "./components/AddDiary.jsx";
+import AddDiary from "./components/Adddiary.jsx";
 function App() {
   return (
     <>

@@ -1,4 +1,4 @@
-import AddDiaryBtn from "./AddDiaryBtn.jsx";
+import AddDiaryBtn from "./Adddiarybtn.jsx";
 export default function AddDiary() {
   return (
     <>
