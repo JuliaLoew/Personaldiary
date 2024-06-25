@@ -1,10 +1,11 @@
-import AddDiary from './components/AddDiary'
-export default function App() {
+import AddDiary from "./components/AddDiary.jsx";
+function App() {
   return (
-      <>
-          <div>
-              <AddDiary />
-          </div>
-      </>
-  )
+    <>
+      <div>
+        <AddDiary />
+      </div>
+    </>
+  );
 }
+export default App;
