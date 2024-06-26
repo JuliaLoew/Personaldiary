@@ -2,37 +2,11 @@ import Diary from "./Diary";
 import { useState } from "react";
 
 const Diaries = () => {
-
-    // test data
-  const diaryData = [
-    {
-      title: "My first diary",
-      entry: "This is my first diary entry",
-      img: "https://placehold.co/600x400",
-      date: "2021-09-01",
-      id: 1,
-    },
-    {
-      title: "My second diary",
-      entry: "This is my second diary entry",
-      img: "https://placehold.co/500x400",
-      date: "2021-09-01",
-      id: 2,
-    },
-    {
-      title: "My third diary",
-      entry: "This is my third diary entry",
-      img: "https://placehold.co/600x800",
-      date: "2021-09-01",
-      id: 3,
-    },
-  ];
-
-  localStorage.setItem("Diary", JSON.stringify(diaryData));
-
+  
   const [diaries, setDiary] = useState(() => {
-    const saved = localStorage.getItem("Diary");
+    const saved = localStorage.getItem("diaryData");
     const initialValue = JSON.parse(saved);
+    console.log(saved);
     return initialValue || [];
   });
 
@@ -46,7 +20,7 @@ const Diaries = () => {
           title={item.title}
           entry={item.entry}
           date={item.date}
-          img={item.img}
+          img={item.imageURL}
         />
       ))}
     </div>
