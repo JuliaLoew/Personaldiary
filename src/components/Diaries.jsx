@@ -38,7 +38,7 @@ const Diaries = () => {
 
   console.log(diaries);
   return (
-    <div className="flex p-10 gap-10 flex-wrap justify-center">
+    <div className="flex flex-wrap justify-center gap-10 p-10">
       {diaries.map((item) => (
         <Diary
           key={item.id}
