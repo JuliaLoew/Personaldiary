@@ -8,18 +8,21 @@ const Diaries = () => {
     {
       title: "My first diary",
       entry: "This is my first diary entry",
+      img: "https://placehold.co/600x400",
       date: "2021-09-01",
       id: 1,
     },
     {
       title: "My second diary",
       entry: "This is my second diary entry",
+      img: "https://placehold.co/500x400",
       date: "2021-09-01",
       id: 2,
     },
     {
       title: "My third diary",
       entry: "This is my third diary entry",
+      img: "https://placehold.co/600x800",
       date: "2021-09-01",
       id: 3,
     },
@@ -43,6 +46,7 @@ const Diaries = () => {
           title={item.title}
           entry={item.entry}
           date={item.date}
+          img={item.img}
         />
       ))}
     </div>
