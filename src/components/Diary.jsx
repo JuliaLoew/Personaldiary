@@ -1,11 +1,11 @@
 import Diarydetails from "./Diarydetails";
 
 
-const Diary = ({title, date, entry}) => {
+const Diary = ({title, date, entry, img}) => {
   return (
     <div className="card glass w-80">
       <figure>
-        <img src="https://placehold.co/600x400" alt="TITLE" />  {/* todo: replace alt with title from local storage */}
+        <img className="object-cover w-full h-48" src={img} alt="TITLE" />  {/* todo: replace alt with title from local storage */}
       </figure>
       <div className="card-body">
         <p>{ date }</p>
