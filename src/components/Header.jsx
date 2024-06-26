@@ -1,3 +1,5 @@
+import AddDiary from "./Adddiary";
+
 const Header = () => {
   return (
     <header className="navbar flex bg-base-100 bg-neutral p-10 text-neutral-content">
@@ -14,7 +16,7 @@ const Header = () => {
         </p>
       </div>
       <div className="navbar-end w-1/4">
-        <a className="btn">New Dairy</a>
+        <AddDiary />
       </div>
     </header>
   );
