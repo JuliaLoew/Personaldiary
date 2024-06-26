@@ -1,12 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 const Diarydetails = ({ title, date, entry, img }) => {
-  const initialDiaryContent = {
-    title: "Erster Tag in Paris",
-    date: "25.06.2024",
-    content:
-      "Heute war mein erster Tag in Paris und es war einfach unglaublich. Wir haben den Eiffelturm besucht und sind durch die malerischen Straßen von Montmartre geschlendert. Die Architektur hier ist atemberaubend, und das Essen ist einfach fantastisch. Ich kann es kaum erwarten, mehr von dieser wunderschönen Stadt zu entdecken!",
-  };
+ 
 
   const [isEditing, setIsEditing] = useState(false);
   const [diaryContent, setDiaryContent] = useState(() => {
@@ -37,6 +32,7 @@ const Diarydetails = ({ title, date, entry, img }) => {
   };
 
   return (
+    
     <div className="mx-auto max-w-xl rounded-lg border border-gray-300 bg-white p-4 shadow-lg">
       <div className="mb-4 flex items-center justify-center">
         <img

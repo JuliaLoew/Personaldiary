@@ -1,20 +1,20 @@
 import Diary from "./Diary";
-import Diarydetails from "./Diarydetails";
-
 import { useState } from "react";
 
 const Diaries = () => {
   const [diaries, setDiary] = useState(() => {
     const saved = localStorage.getItem("diaryData");
     const initialValue = JSON.parse(saved);
-    console.log(saved);
+    //console.log(saved);
     return initialValue || [];
   });
+
+
 
   return (
     <div className="flex flex-wrap justify-center gap-10 p-10">
       {diaries.map((item) => (
-        <>
+
           <Diary
             key={item.id}
             item={item}
@@ -23,7 +23,8 @@ const Diaries = () => {
             date={item.date}
             img={item.imageURL}
           />
-        </>
+
+    
       ))}
     </div>
   );
