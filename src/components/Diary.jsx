@@ -1,6 +1,9 @@
 import Diarydetails from "./Diarydetails";
 
 const Diary = ({ title, date, entry, img }) => {
+
+console.log("hallo" + img);
+  const shortEntry = entry.substring(0, 70) + " ...";
   return (
     <div className="card glass w-80">
       <figure>
@@ -10,7 +13,7 @@ const Diary = ({ title, date, entry, img }) => {
       <div className="card-body">
         <p>{date}</p>
         <h2 className="card-title">{title}</h2>
-        <p className="mb-2">{entry}</p>
+        <p className="mb-2">{shortEntry}</p>
         <div className="card-actions justify-end">
           <button
             className="btn"
