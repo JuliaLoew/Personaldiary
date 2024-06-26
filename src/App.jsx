@@ -1,11 +1,18 @@
+import './index.css';
+import Diaries from './components/Diaries.jsx';
+import Footer from './components/Footer.jsx';
 import AddDiary from "./components/Adddiary.jsx";
-function App() {
+
+
+const App = () => {
   return (
-    <>
-      <div>
-        <AddDiary />
-      </div>
-    </>
-  );
-}
+  <> 
+  <div className='text-2xl text-red-500 '>Personal Diary</div>
+  <button className="btn-secondary">Secondary</button>
+  <AddDiary />
+  <Diaries />
+  <Footer />
+  </> )
+};
+
 export default App;
