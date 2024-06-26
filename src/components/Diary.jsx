@@ -1,7 +1,7 @@
 import Diarydetails from "./Diarydetails";
 
 
-const Diary = ({ title, date, entry, img }) => {
+const Diary = ({ key, item,  title, date, entry, img }) => {
 
   const shortEntry = entry.substring(0, 70) + " ...";
   return (
@@ -23,7 +23,14 @@ const Diary = ({ title, date, entry, img }) => {
           </button>
           <dialog id="my_modal_4" className="modal">
             <div className="modal-box w-11/12 max-w-5xl">
-              <Diarydetails />
+            <Diarydetails
+            key={key}
+            item={item}
+            title={item.title}
+            entry={item.entry}
+            date={item.date}
+            img={item.imageURL}
+          />
             </div>
           </dialog>
         </div>

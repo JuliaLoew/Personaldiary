@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-const Diarydetails = () => {
+const Diarydetails = ({ title, date, entry, img }) => {
   const initialDiaryContent = {
     title: "Erster Tag in Paris",
     date: "25.06.2024",
@@ -11,7 +11,7 @@ const Diarydetails = () => {
   const [isEditing, setIsEditing] = useState(false);
   const [diaryContent, setDiaryContent] = useState(() => {
     // Abruf Daten local Storage
-    const storedDiaryContent = localStorage.getItem("diaryContent");
+    const storedDiaryContent = localStorage.getItem("diaryData");
     return storedDiaryContent
       ? JSON.parse(storedDiaryContent)
       : initialDiaryContent;
@@ -43,7 +43,7 @@ const Diarydetails = () => {
           className="mr-4"
           width="500"
           height="500"
-          src="https://media.istockphoto.com/id/806402562/de/foto/eiffelturm-antike-paris-fotografieren-1893.jpg?s=1024x1024&w=is&k=20&c=ttumGNBUhQZVpYL4LHMMX3qta_8QFVQBo_eKci8BHiE="
+          src={img}
           alt="Bild"
           style={{ maxWidth: "100%", height: "auto" }}
         />
@@ -52,25 +52,25 @@ const Diarydetails = () => {
         <input
           type="text"
           name="title"
-          value={diaryContent.title}
+          value={ title }
           onChange={handleChange}
           className="flex items-center justify-center p-4 text-xl font-bold text-blue-900"
         />
       ) : (
         <h1 className="flex items-center justify-center p-4 text-xl font-bold text-blue-900">
-          {diaryContent.title}
+          {title}
         </h1>
       )}
-      <div className="mb-2 text-sm font-bold">{diaryContent.date}</div>
+      <div className="mb-2 text-sm font-bold">{date}</div>
       {isEditing ? (
         <textarea
           name="content"
-          value={diaryContent.content}
+          value={entry}
           onChange={handleChange}
           className="h-40 w-full rounded-lg border border-gray-300 p-2 text-sm leading-relaxed"
         />
       ) : (
-        <div className="text-sm leading-relaxed">{diaryContent.content}</div>
+        <div className="text-sm leading-relaxed">{entry}</div>
       )}
       <button
         className="mt-4 rounded bg-blue-500 px-4 py-2 font-bold text-white hover:bg-blue-700"
