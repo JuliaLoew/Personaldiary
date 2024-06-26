@@ -18,7 +18,11 @@ const Diary = ({title, date, entry, img}) => {
           >
             open modal
           </button>
+          <dialog id="my_modal_4" className="modal">
+  <div className="modal-box w-11/12 max-w-5xl">
           <Diarydetails />
+          </div>
+</dialog>
         </div>
       </div>
     </div>
