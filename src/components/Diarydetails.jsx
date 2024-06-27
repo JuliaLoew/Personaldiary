@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 const Diarydetails = ({ title, date, entry, img, onError }) => {
+  const [isVisible, setIsVisible] = useState(true);
   const [isEditing, setIsEditing] = useState(false);
   const [diaryContent, setDiaryContent] = useState(() => {
     // Abruf Daten local Storage
@@ -27,10 +28,35 @@ const Diarydetails = ({ title, date, entry, img, onError }) => {
   const handleChange = (e) => {
     // Aktualisiert den Inhalt des Tagebucheintrags
     setDiaryContent({ ...diaryContent, [e.target.name]: e.target.value });
+
   };
+
+  const closeWindow = () => {
+    setIsVisible(false);
+  }; 
+
+  if (!isVisible) return null;
 
   return (
     <div className="mx-auto max-w-xl rounded-lg border border-gray-300 bg-white p-4 shadow-lg">
+
+<button className="btn btn-square btn-outline" onClick={closeWindow}>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    className="h-6 w-6"
+    fill="none"
+    viewBox="0 0 24 24"
+    stroke="currentColor">
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth="2"
+      d="M6 18L18 6M6 6l12 12" />
+  </svg>
+</button>
+
+
+      
       <div className="mb-4 flex items-center justify-center">
         <img
           className="mr-4"
@@ -48,14 +74,14 @@ const Diarydetails = ({ title, date, entry, img, onError }) => {
           name="title"
           value={title}
           onChange={handleChange}
-          className="flex items-center justify-center p-4 text-xl font-bold text-blue-900"
+          className="card-title flex items-center justify-center p-4"
         />
       ) : (
-        <h1 className="flex items-center justify-center p-4 text-xl font-bold text-blue-900">
+        <h1 className="card-title flex items-center justify-center p-4">
           {title}
         </h1>
       )}
-      <div className="mb-2 text-sm font-bold">{date}</div>
+      <div className="mb-4 text-sm font-bold">{date}</div>
       {isEditing ? (
         <textarea
           name="content"
@@ -67,7 +93,7 @@ const Diarydetails = ({ title, date, entry, img, onError }) => {
         <div className="text-sm leading-relaxed">{entry}</div>
       )}
       <button
-        className="mt-4 rounded bg-blue-500 px-4 py-2 font-bold text-white hover:bg-blue-700"
+        className="btn btn-outline mt-3"
         onClick={isEditing ? handleSave : handleEdit}
       >
         {isEditing ? "Save" : "Edit"}
