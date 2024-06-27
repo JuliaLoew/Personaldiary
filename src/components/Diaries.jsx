@@ -32,7 +32,7 @@ const handleImageError = (event) => {
 };
 
   return (
-    <div className="flex flex-wrap justify-center gap-10 p-10">
+    <div className="flex flex-wrap justify-center gap-10 p-10 sm:pb-40">
       {diaries.map((item) => (
         <Diary
           key={item.id}
