@@ -30,6 +30,7 @@ const Diary = ({ item, title, date, entry, img, onError }) => {
                 entry={item.entry}
                 date={item.date}
                 img={item.imageURL}
+                onError={onError}
               />
             </div>
           </dialog>
