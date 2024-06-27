@@ -55,7 +55,7 @@ export default function AddDiary() {
 
   return (
     <>
-      <AddDiaryBtn />
+      <AddDiaryBtn id="my_modal_3" />
       <dialog id="my_modal_3" className="modal">
         <div className="modal-box">
           <form method="dialog">
