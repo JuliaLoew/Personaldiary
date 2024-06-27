@@ -6,25 +6,40 @@ export default function AddDiary() {
     title: "",
     imageURL: "",
     entry: "",
+    date:"",
+    id: "",
   });
 
   const handleChangeDiary = (e) => {
-    setDiary({
+    setDiary(()=>({
       ...diary,
       [e.target.name]: e.target.value,
-    });
+      id: Date.now(), 
+      date: new Date().toLocaleDateString()
+    }));
   };
   const addToLocalStorage = (key, value) => {
     let diariesData = JSON.parse(localStorage.getItem(key)) || [];
-    let exitingDiary = diariesData.find((diary) => value.date == diary.date);
+    let exitingTitle = diariesData.find((diary) => diary.title == value.title);
+    let exitingDate = diariesData.find((diary) => diary.date == value.date);
     const newData= {...value, id: Date.now(), date: new Date().toLocaleDateString()}
     let dataInLocalStorage = [...diariesData, newData];
-    if (!exitingDiary && value.entry) {
+    if (!exitingDate  && !exitingTitle && value.entry) {
+      console.log(!exitingDate );
       localStorage.setItem(key, JSON.stringify(dataInLocalStorage));
       setTimeout(() => {
         alert("Diary added successfully");
       }, 100);
-    } else if (!value.entry) {
+    } else if (exitingTitle  && value.entry) {
+      setTimeout(() => {
+        alert("You have already written a diary with the same title");
+      }, 100);
+    } else if (exitingDate  && value.entry) {
+      setTimeout(() => {
+        alert("You have already written a diary today, please come back tomorrow");
+      }, 100);
+    } 
+     else if (!value.entry) {
       alert("Please write your diary");
     } else {
       alert("Diary already exists");
@@ -59,7 +74,7 @@ export default function AddDiary() {
       <dialog id="my_modal_3" className="modal">
         <div className="modal-box">
           <form method="dialog">
-            <label className="flex items-center gap-2 mt-8 input input-accent">
+            <label className="flex items-center gap-2 mt-8 input input-bordered">
               <input
                 type="text"
                 className="grow"
@@ -70,7 +85,7 @@ export default function AddDiary() {
               />
             </label>{" "}
             <br />
-            <label className="flex items-center gap-2 input input-accent">
+            <label className="flex items-center gap-2 input input-bordered">
               <input
                 type="text"
                 className="grow"
@@ -84,7 +99,7 @@ export default function AddDiary() {
             <label className="flex items-center">
               <textarea
                 name="entry"
-                className="mb-4 textarea textarea-accent grow"
+                className="mb-4 textarea textarea-bordered grow"
                 value={diary.entry}
                 onChange={handleChangeDiary}
                 placeholder="Please write your diary here"
@@ -95,20 +110,22 @@ export default function AddDiary() {
               ✕
             </button>{" "}
             <br />
-            <button
-              className="btn btn-outline btn-accent bottom-4 left-6"
-              type="reset"
-              onClick={reset}
-            >
-              Reset
-            </button>
-            <button
-              className="absolute btn btn-outline btn-accent bottom-4 right-6"
-              type="submit"
-              onClick={handleSubmit}
-            >
-              Submit
-            </button>
+            <div className="flex justify-between">
+              <button
+                className="btn btn-outline btn-bordered"
+                type="reset"
+                onClick={reset}
+              >
+                Reset
+              </button>
+              <button
+                className="btn btn-outline btn-bordered"
+                type="submit"
+                onClick={handleSubmit}
+              >
+                Submit
+              </button>
+            </div>
           </form>
         </div>
       </dialog>
