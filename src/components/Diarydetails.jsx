@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-const Diarydetails = ({ title, date, entry, img }) => {
+const Diarydetails = ({ title, date, entry, img, onError }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [diaryContent, setDiaryContent] = useState(() => {
     // Abruf Daten local Storage
@@ -37,6 +37,7 @@ const Diarydetails = ({ title, date, entry, img }) => {
           width="500"
           height="500"
           src={img}
+          onError={onError}
           alt="Bild"
           style={{ maxWidth: "100%", height: "auto" }}
         />

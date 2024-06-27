@@ -1,12 +1,12 @@
 import Diarydetails from "./Diarydetails";
 import { useState } from "react";
 
-const Diary = ({ item, title, date, entry, img }) => {
+const Diary = ({ item, title, date, entry, img, onError }) => {
   const shortEntry = entry.substring(0, 70) + " ...";
   return (
     <div className={`card glass w-80 ${item.id}`}>
       <figure>
-        <img className="h-48 w-full object-cover" src={img} alt="TITLE" />{" "}
+        <img className="h-48 w-full object-cover" src={img} alt={title} onError={onError} />{" "}
         {/* todo: replace alt with title from local storage */}
       </figure>
       <div className="card-body">
@@ -30,6 +30,7 @@ const Diary = ({ item, title, date, entry, img }) => {
                 entry={item.entry}
                 date={item.date}
                 img={item.imageURL}
+                onError={onError}
               />
             </div>
           </dialog>

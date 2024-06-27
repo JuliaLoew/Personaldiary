@@ -1,7 +1,7 @@
 import Diary from "./Diary";
 import { useEffect, useState } from "react";
 
-
+const fallbackImageURL = 'https://placehold.co/600x400?text=Kein+Bild+vorhanden';
 const Diaries = () => {
 
   const [diaries, setDiary] = useState([]);
@@ -26,6 +26,11 @@ useEffect(() => {
   return () => clearInterval(intervalId);
 }, []);
 
+const handleImageError = (event) => {
+  event.target.src = fallbackImageURL;
+  console.log("Image not found, fallback to placeholder image");
+};
+
   return (
     <div className="flex flex-wrap justify-center gap-10 p-10">
       {diaries.map((item) => (
@@ -36,6 +41,7 @@ useEffect(() => {
           entry={item.entry}
           date={item.date}
           img={item.imageURL}
+          onError={handleImageError}
         />
       ))}
     </div>
