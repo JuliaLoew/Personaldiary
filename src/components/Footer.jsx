@@ -1,6 +1,6 @@
 const Footer = () => {
     return (
-        <footer className="footer bg-neutral text-neutral-content p-10 flex justify-center flex-col sm:flex-row">
+        <footer className="footer bg-neutral text-neutral-content p-5 flex justify-center flex-col sm:flex-row sm:fixed sm:bottom-0">
   <div className="flex sm:gap-10 justify-center w-full sm:w-3/4 sm:justify-start flex-col sm:flex-row">
   <img className="fill-current m-auto sm:m-0" width="50" height="50" src="https://img.icons8.com/?size=50&id=2025&format=png&color=a6adbb" alt="pen"/>
   

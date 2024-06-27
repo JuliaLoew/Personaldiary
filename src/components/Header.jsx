@@ -2,7 +2,7 @@ import AddDiary from "./Adddiary";
 
 const Header = () => {
   return (
-    <header className="navbar flex bg-base-100 bg-neutral p-10 text-neutral-content">
+    <header className="navbar flex bg-base-100 bg-neutral px-10 py-5 text-neutral-content">
       <div className="navbar-start w-3/4">
         <img
           className="sm:m-0"
