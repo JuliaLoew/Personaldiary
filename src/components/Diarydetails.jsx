@@ -33,6 +33,12 @@ const Diarydetails = ({
     onClose();
   };
 
+  const closeWindow = () => {
+    setIsVisible(false);
+  }; 
+
+  if (!isVisible) return null;
+
   return (
     <div className="modal-box p-10">
       <form method="dialog">
