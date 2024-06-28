@@ -1,8 +1,16 @@
 import Diarydetails from "./Diarydetails";
-import { useState } from "react";
 
-const Diary = ({ item, title, date, entry, img, onError }) => {
+const Diary = ({ item, title, date, entry, img, onError, onSave }) => {
   const shortEntry = entry.substring(0, 70) + " ...";
+
+  const handleCloseModal = (id) => {
+    const modal = document.getElementById(id);
+    if (modal) {
+      modal.close();
+    }
+  };
+
+
   return (
     <div className={`card glass w-80 ${item.id}`}>
       <figure>
@@ -18,11 +26,11 @@ const Diary = ({ item, title, date, entry, img, onError }) => {
             className="btn"
             onClick={() => document.getElementById(`${item.id}`).showModal()}
           >
-            open modal
+            Full Diary
           </button>
 
           <dialog id={`${item.id}`} className="modal">
-            <div className="modal-box w-11/12 max-w-5xl">
+            
               <Diarydetails
                 key={item.id}
                 item={item}
@@ -31,8 +39,10 @@ const Diary = ({ item, title, date, entry, img, onError }) => {
                 date={item.date}
                 img={item.imageURL}
                 onError={onError}
+                onSave={onSave}
+                onClose={() => handleCloseModal(item.id)}
               />
-            </div>
+            
           </dialog>
         </div>
       </div>

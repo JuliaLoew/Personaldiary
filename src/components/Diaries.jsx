@@ -21,14 +21,17 @@ useEffect(() => {
 
   const intervalId = setInterval(() => {
     getDiaryEntries();
-  }, 3000); 
+  }, 1000); 
 
   return () => clearInterval(intervalId);
 }, []);
 
 const handleImageError = (event) => {
   event.target.src = fallbackImageURL;
-  console.log("Image not found, fallback to placeholder image");
+};
+
+const handleSave = (updatedEntries) => {
+  setDiary(updatedEntries);
 };
 
   return (
@@ -42,6 +45,7 @@ const handleImageError = (event) => {
           date={item.date}
           img={item.imageURL}
           onError={handleImageError}
+          onSave={handleSave}
         />
       ))}
     </div>
