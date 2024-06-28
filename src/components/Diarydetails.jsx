@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const Diarydetails = ({
   item,
@@ -8,15 +8,15 @@ const Diarydetails = ({
   img,
   onError,
   onSave,
-  onClose,
 }) => {
-  const [isEditing, setIsEditing] = useState(false);
-    const [diaries, setDiary] = useState({
+  
+  const [diaries, setDiary] = useState({
     ...item,
     title,
     imageURL: img,
     entry,
   });
+  const [isEditing, setIsEditing] = useState(false);
 
   const handleEdit = () => {
     setIsEditing(true);
@@ -33,8 +33,11 @@ const Diarydetails = ({
     setDiary(sortedData);
     onSave(updatedEntries);
     setIsEditing(false);
-    onClose();
   };
+
+
+  
+ 
 
   return (
     <div className="modal-box p-10">
