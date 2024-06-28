@@ -11,7 +11,7 @@ const Diarydetails = ({
   onClose,
 }) => {
   const [isEditing, setIsEditing] = useState(false);
-  const [currentEntry, setCurrentEntry] = useState({
+    const [diaries, setDiary] = useState({
     ...item,
     title,
     imageURL: img,
@@ -25,9 +25,12 @@ const Diarydetails = ({
   const handleSave = () => {
     const storedEntries = JSON.parse(localStorage.getItem("diaryData")) || [];
     const updatedEntries = storedEntries.map((e) =>
-      e.id === currentEntry.id ? currentEntry : e,
+      e.id === diaries.id ? diaries : e,
     );
     localStorage.setItem("diaryData", JSON.stringify(updatedEntries));
+    console.log("Änderungen gespeichert:", updatedEntries);
+    const sortedData = updatedEntries.sort((a, b) => b.id - a.id);
+    setDiary(sortedData);
     onSave(updatedEntries);
     setIsEditing(false);
     onClose();
@@ -48,25 +51,25 @@ const Diarydetails = ({
             <input
               className="input input-bordered w-full"
               type="text"
-              value={currentEntry.imageURL}
+              value={diaries.imageURL}
               onChange={(e) =>
-                setCurrentEntry({ ...currentEntry, imageURL: e.target.value })
+                setDiary({ ...diaries, imageURL: e.target.value })
               }
             />
             <input
               className="input input-bordered my-5 w-full"
               type="text"
-              value={currentEntry.title}
+              value={diaries.title}
               onChange={(e) =>
-                setCurrentEntry({ ...currentEntry, title: e.target.value })
+                setDiary({ ...diaries, title: e.target.value })
               }
             />
 
             <textarea
               className="textarea textarea-bordered mb-5 h-48 w-full"
-              value={currentEntry.entry}
+              value={diaries.entry}
               onChange={(e) =>
-                setCurrentEntry({ ...currentEntry, entry: e.target.value })
+                setDiary({ ...diaries, entry: e.target.value })
               }
             />
           </form>

@@ -1,7 +1,7 @@
 import Diarydetails from "./Diarydetails";
 
 const Diary = ({ item, title, date, entry, img, onError, onSave }) => {
-  const shortEntry = entry.substring(0, 70) + " ...";
+ 
 
   const handleCloseModal = (id) => {
     const modal = document.getElementById(id);
@@ -10,12 +10,13 @@ const Diary = ({ item, title, date, entry, img, onError, onSave }) => {
     }
   };
 
+  const shortEntry = entry.substring(0, 70) + " ..."; // zeigt nur die ersten 70 zeiche in der card an
+
 
   return (
     <div className={`card glass w-80 ${item.id}`}>
       <figure>
         <img className="h-48 w-full object-cover" src={img} alt={title} onError={onError} />{" "}
-        {/* todo: replace alt with title from local storage */}
       </figure>
       <div className="card-body">
         <p>{date}</p>
